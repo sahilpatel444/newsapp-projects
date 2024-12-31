@@ -52,7 +52,7 @@ function Search() {
             // value={`${search} ${location.state_district}`}
 
             placeholder="Enter City Name"
-            onKeyDown={handleKeyPress}
+            // onKeyDown={handleKeyPress}
           />
 
           <div className="search-btn">

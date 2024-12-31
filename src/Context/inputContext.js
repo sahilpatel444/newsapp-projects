@@ -29,6 +29,7 @@ export const InputProvider = ({ children }) => {
     const handleKeyPress = (e) => {
       if (e.key === "Enter") {
         searchWeather(search); // Trigger the submit function
+        getdata(search); // Trigger the submit function
       }
     };
 
