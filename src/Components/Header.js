@@ -72,7 +72,7 @@ function classNames(...classes) {
 }
 
 const Header = () => {
-  const { theme, toggleTheme, handleInput, search, handleKeyPress } =
+  const { theme, toggleTheme, handleInput, search, handleKeyPress ,getdata} =
     useContext(InputContext);
 
   // enter to search value
@@ -126,12 +126,12 @@ const Header = () => {
               onKeyDown={handleKeyPress}
               // className="w-40 sm:w-64 rounded-md border border-gray-300 bg-gray-700 text-gray-200 px-3 py-1 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            {/* <button
+            <button
               onClick={() => getdata(search)}
               className="ml-2 px-3 py-1 rounded-md bg-blue-600 text-white text-sm hover:bg-blue-700 focus:outline-none"
             >
               Search
-            </button> */}
+            </button>
           </div>
 
           {/* Theme Toggle */}
