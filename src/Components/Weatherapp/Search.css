@@ -1,0 +1,84 @@
+.search {
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 2;
+  padding: 3;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  position: relative;
+
+}
+
+.search input {
+  border: black;
+  height: 50%;
+  width: 100%;
+  padding: 3;
+  font-size: large;
+  border: none;
+  padding-top: 12px;
+  
+}
+/* .search-btn{
+    padding: 3;
+    background-color:rgb(43, 65, 70);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    
+} */
+.search-btn {
+  display: flex; /* Align buttons in a row */
+  gap: 10px; /* Space between buttons */
+  line-height: 1;
+}
+
+.search-btn button {
+  padding: 5px 10px; /* Add padding inside the buttons */
+
+  border: none; /* Remove default borders */
+  background-color: rgb(43, 65, 70); /* Button background color */
+  color: white; /* Button text color */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+  line-height: 1;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history {
+  text-align: left;
+  border-right: 0cap;
+}
+
+.result {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 5px;
+  padding: 2px;
+}
+.result h2 {
+  text-align: center;
+  font-size: xx-large;
+}
+.result .tempratur {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.result .icone {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  align-items: center;
+}
+.search-history {
+  position: absolute;
+  margin-top: 1px;
+  padding: 2px;
+}

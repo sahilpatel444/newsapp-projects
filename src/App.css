@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* dark mode */
+.search-input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+  }
