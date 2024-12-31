@@ -73,7 +73,7 @@ export const InputProvider = ({ children }) => {
       );
 
       const jsonData = await response.json();
-      const filterData = jsonData.articles.filter(
+      const filterData =await jsonData.articles.filter(
         (data) => data.author !== null
       );
       console.log(filterData, "filterdata");
