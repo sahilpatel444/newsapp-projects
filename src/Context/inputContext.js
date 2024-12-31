@@ -25,14 +25,7 @@ export const InputProvider = ({ children }) => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
-    // enter to search value
-    const handleKeyPress = (e) => {
-      if (e.key === "Enter") {
-        getdata(search); // Trigger the submit function
-       
-      }
-    };
-
+ 
   // weather api fetch and search history
   const searchWeather = () => {
     if (search !== "") {
@@ -93,6 +86,15 @@ export const InputProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
+
+     // enter to search value
+     const handleKeyPress = (e) => {
+      if (e.key === "Enter") {
+        getdata(search); // Trigger the submit function
+       
+      }
+    };
+
  
 
   return (
