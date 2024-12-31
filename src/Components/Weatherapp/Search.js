@@ -5,7 +5,7 @@ import "./Search.css";
 import { InputContext } from "../../Context/inputContext";
 
 function Search() {
-  const { search, handleInput ,handleKeyPress} = useContext(InputContext);
+  const { search, handleInput } = useContext(InputContext);
   const { searchWeather, searchHistory, theme } = useContext(InputContext);
 
   const [location, setLocation] = useState("");
@@ -36,6 +36,14 @@ function Search() {
   console.log(location, "getUserLocation");
   console.log("Geolocation supported:", "geolocation" in navigator);
 
+    // enter to search value
+    const handleKeyPress = (e) => {
+      if (e.key === "Enter") {
+        searchWeather(search); // Trigger the submit function
+       
+      }
+    };
+
   return (
     <>
       <div>
@@ -52,7 +60,7 @@ function Search() {
             // value={`${search} ${location.state_district}`}
 
             placeholder="Enter City Name"
-            // onKeyDown={handleKeyPress}
+            onKeyDown={handleKeyPress}
           />
 
           <div className="search-btn">

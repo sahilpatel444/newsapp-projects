@@ -28,8 +28,8 @@ export const InputProvider = ({ children }) => {
     // enter to search value
     const handleKeyPress = (e) => {
       if (e.key === "Enter") {
-        searchWeather(search); // Trigger the submit function
         getdata(search); // Trigger the submit function
+       
       }
     };
 
