@@ -11,7 +11,7 @@ export const InputProvider = ({ children }) => {
   const [searchhistory, setSearchHistory] = useState([]);
 
   const [error, setError] = useState("");
-  const [newsData, setNewsData] = useState(null);
+  const [newsData, setNewsData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [city, setCity] = useState("");
 

@@ -72,7 +72,7 @@ function classNames(...classes) {
 }
 
 const Header = () => {
-  const { theme, toggleTheme, handleInput, search, handleKeyPress ,getdata} =
+  const { theme, toggleTheme, handleInput, search, handleKeyPress } =
     useContext(InputContext);
 
   // enter to search value
@@ -84,9 +84,9 @@ const Header = () => {
 
   return (
     <>
-      <div className="relative flex h-16 justify-between items-center px-4 bg-slate-800">
+      <div className="relative flex h-16 justify-between items-center px-4 bg-slate-800 ">
         {/* Left Section: Logo and Navigation */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 " >
           {/* Logo */}
           <div className="topNavbar">
             <img alt="Your Company" src={logo} className="h-8 w-auto" />
@@ -119,19 +119,32 @@ const Header = () => {
           {/* Search Bar */}
           <div className="searchBar">
             <input
+            className={theme}
               type="text"
               placeholder="Search News"
               onChange={handleInput}
               value={search}
               onKeyDown={handleKeyPress}
+              style={{
+                padding: "8px",
+                borderRadius: "4px",
+                border: "1px solid #ccc",
+                outline: "none",
+                minWidth: "150px",
+                // minHeight: "5px",
+              }}
               // className="w-40 sm:w-64 rounded-md border border-gray-300 bg-gray-700 text-gray-200 px-3 py-1 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <button
+            {/* <button
+            // style={{ padding: "8px",
+            //   borderRadius: "4px",
+            //   border: "1px solid #ccc",
+            //   outline: "none",}}
               onClick={() => getdata(search)}
               className="ml-2 px-3 py-1 rounded-md bg-blue-600 text-white text-sm hover:bg-blue-700 focus:outline-none"
             >
               Search
-            </button>
+            </button> */}
           </div>
 
           {/* Theme Toggle */}

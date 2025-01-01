@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import Result from "./Result";
 import "./Search.css";
@@ -11,8 +12,6 @@ function Search() {
   const [location, setLocation] = useState("");
 
   // const [error, setError] = useState(null);
-
- 
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -36,21 +35,22 @@ function Search() {
   console.log(location, "getUserLocation");
   console.log("Geolocation supported:", "geolocation" in navigator);
 
-    // enter to search value
-    const handleKeyPress = (e) => {
-      if (e.key === "Enter") {
-        searchWeather(search); // Trigger the submit function
-       
-      }
-    };
+  // enter to search value
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      searchWeather(search); // Trigger the submit function
+    }
+  };
 
   return (
     <>
-      <div>
-        <div className="search">
+    <div className={`weatherfull ${theme}`}>
+
+   
+      <div className={`weather ${theme}`}>
+        <div className="search ">
           {/* <input type='search' value={search} onChange={()=>changeSearch(searchInput.current.value)} ref={searchInput}/> */}
           <input
-            
             type="search"
             // value={search}
             onChange={handleInput}
@@ -70,13 +70,14 @@ function Search() {
           </div>
         </div>
 
-        <div>
+          </div>
+        <div className="result">
           <Result
             historyData={searchHistory}
             location={location}
             setLocation={setLocation}
           />
-        </div>
+      </div>
       </div>
     </>
   );
