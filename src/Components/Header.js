@@ -176,18 +176,18 @@ const Header = () => {
               </MenuItem>
               <MenuItem>
                 <a
-                  href="#"
+                  href="/weather"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
-                  Settings
+                  Weather App
                 </a>
               </MenuItem>
               <MenuItem>
                 <a
-                  href="#"
+                  href="/notes"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
-                  Sign out
+                  Note App
                 </a>
               </MenuItem>
             </MenuItems>
@@ -199,3 +199,5 @@ const Header = () => {
 };
 
 export default Header;
+
+
