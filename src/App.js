@@ -6,6 +6,7 @@ import Notes from "./Components/Noteapp/noteapp.js";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Search from "./Components/Weatherapp/Search.js";
 import { InputProvider } from "./Context/inputContext.js";
+import HomePage from "./Components/MovieSearchapp/HomePage.js";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Newsapp />} />
             <Route path="/notes" element={<Notes />} />
             <Route path="/weather" element={<Search />} />
+            <Route path="/movie" element={<HomePage/>}/>
           
           </Routes>
         </InputProvider>

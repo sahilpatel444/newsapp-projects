@@ -4,14 +4,82 @@ import Result from "./Result";
 import "./Search.css";
 
 import { InputContext } from "../../Context/inputContext";
+import axios from "axios";
+import DayForcast from "./DayForcast";
+
+
+
+//////
 
 function Search() {
   const { search, handleInput } = useContext(InputContext);
-  const { searchWeather, searchHistory, theme } = useContext(InputContext);
+  const {  theme } = useContext(InputContext);
 
   const [location, setLocation] = useState("");
+  const [weatherData, setWeatherData] = useState([]);
+  const [searchhistory, setSearchHistory] = useState([]);
+  const [error, setError] = useState("");
+
 
   // const [error, setError] = useState(null);
+  
+  const searchWeather = () => {
+    if (search !== "") {
+      const API_KEY = "59ec7260e5bc43118fce3d1056b7f3e1";
+    
+    
+      const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${API_KEY}&units=metric`;
+
+      const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${API_KEY}&units=metric`;
+
+     
+       // Fetch both APIs in parallel
+       Promise.all([axios.get(weatherUrl), axios.get(forecastUrl)])
+       .then(([weatherResponse, forecastResponse]) => {
+           const currentWeather = weatherResponse.data;
+           const forecastData = forecastResponse.data.list;
+
+           // Process forecast data: Group by date
+           const dailyForecast = forecastData.reduce((acc, curr) => {
+               const date = curr.dt_txt.split(" ")[0];
+               if (!acc[date]) acc[date] = [];
+               acc[date].push(curr);
+               return acc;
+           }, {});
+
+           const sevenDayForecast = Object.keys(dailyForecast)
+               .slice(0, 6) // Extract the first 7 days
+               .map((date) => ({
+                   date,
+                   forecast: dailyForecast[date], // All hourly data for the day
+               }));
+
+           // Update state
+           setWeatherData({
+               current: currentWeather,
+               forecast: sevenDayForecast,
+           });
+
+           // Update search history
+           if (!searchhistory.includes(search)) {
+               setSearchHistory([...searchhistory, search]);
+           }
+
+           console.log({
+               current: currentWeather,
+               forecast: sevenDayForecast,
+           },"weather and forcast data");
+       })
+       .catch((error) => {
+           console.error("Error fetching data:", error);
+           setError("City not found. Please try again.");
+           setWeatherData(null);
+       });
+     
+    }
+  };
+
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -72,15 +140,25 @@ function Search() {
 
           </div>
         <div className="result">
-          <Result
-            historyData={searchHistory}
+          {/* <Result
+            searchhistory={searchhistory}
             location={location}
             setLocation={setLocation}
-          />
+            weatherData={weatherData}
+          /> */}
+          
       </div>
+      <DayForcast
+      searchhistory={searchhistory}
+      location={location}
+      setLocation={setLocation}
+      weatherData={weatherData}
+          
+      />
       </div>
     </>
   );
 }
 
 export default Search;
+

@@ -7,10 +7,9 @@ export const InputContext = createContext();
 export const InputProvider = ({ children }) => {
   const [search, setSearch] = useState('');
   const [theme, setTheme] = useState("");
-  const [weatherData, setWeatherData] = useState([]);
-  const [searchhistory, setSearchHistory] = useState([]);
+  
+  
 
-  const [error, setError] = useState("");
   const [newsData, setNewsData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [city, setCity] = useState("");
@@ -27,32 +26,7 @@ export const InputProvider = ({ children }) => {
 
  
   // weather api fetch and search history
-  const searchWeather = () => {
-    if (search !== "") {
-      const API_KEY = "59ec7260e5bc43118fce3d1056b7f3e1";
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${API_KEY}&units=metric`;
-
-      axios
-        .get(url)
-        .then((response) => {
-          if (searchhistory.indexOf(search) === -1) {
-            //search history ,same data not show === -1
-            setSearchHistory([
-              ...searchhistory, // old data to new data , repete data not store
-              search,
-            ]);
-          }
-
-          console.log(response.data, "responsedata");
-          setWeatherData(response.data);
-        })
-        .catch((error) => {
-          console.error(error, "error");
-          setError("City not found ");
-          setWeatherData(null);
-        });
-    }
-  };
+  
   
 
   // News api data fetch
@@ -106,9 +80,7 @@ export const InputProvider = ({ children }) => {
         handleInput,
         theme,
         toggleTheme,
-        searchWeather,
-        weatherData,
-        searchhistory,
+      
         getdata,
         handleKeyPress,
         newsData,

@@ -1,0 +1,65 @@
+.searchinput {
+  font-size: large;
+
+  justify-content: center;
+}
+.searchinput input {
+  width: 500px;
+  height: 50px;
+  font-size: x-large;
+  border-color: black;
+  border-radius: 10px;
+}
+.searchinput button {
+  height: 50px;
+  font-size: x-large;
+  border-radius: 10px;
+  margin-left: 10px;
+  width: 100px;
+}
+.searchinput button:hover {
+}
+.movie-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+  padding-top: 20px;
+
+  /* width: 100px; */
+  /* background-color: rgb(24, 25, 34); */
+  /* display: flex; */
+  justify-content: center;
+  justify-content: space-between;
+
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 768px) {
+  .movie-card {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  }
+}
+
+@media (min-width: 1024px) {
+  .movie-card {
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  }
+}
+
+.cardmovie {
+  width: 200px;
+  margin-top: 10px;
+  background-color: rgb(27, 27, 50);
+  border-radius: 10px;
+  color: white;
+  transition: transform 0.5s;
+}
+
+.cardmovie img {
+  border-radius: 10px;
+}
+.cardmovie:hover {
+  background-color: rgb(34, 34, 41);
+  transform: translateY(-10px);
+  box-shadow: 10 8px 16px rgba(0, 0, 0, 0.2);
+}

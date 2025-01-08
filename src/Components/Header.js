@@ -65,6 +65,7 @@ const navigation = [
   { name: "News App", href: "/", current: false },
   { name: "Weather App", href: "/weather", current: false },
   { name: "Note App", href: "/notes", current: false },
+  {name:"Movie Search", href:"/movie",current:false}
 ];
 
 function classNames(...classes) {
@@ -188,6 +189,14 @@ const Header = () => {
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   Note App
+                </a>
+              </MenuItem>
+              <MenuItem>
+                <a
+                  href="/movie"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Movie App
                 </a>
               </MenuItem>
             </MenuItems>
