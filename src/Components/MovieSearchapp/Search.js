@@ -9,12 +9,22 @@ const MovieSearch = () => {
 
   const API_KEY = "b92cd346";
 
+
+
   const searchMovie = async () => {
+
     if (!search) return;
     try {
       const response = await axios.get(
         `http://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`
       );
+
+      if (response.data.Error) {
+        console.error("API Error:", response.data.Error);
+        setMovie([]); // Clear movies if an error occurs
+        return;
+      }
+
       //   poster data filter
       const filterdata = (response.data.Search || []).filter(
         (movie) => movie.Poster !== "N/A"
@@ -23,11 +33,26 @@ const MovieSearch = () => {
 
       setMovie(filterdata);
     } catch (error) {
-      console.error("Error fatching data", error);
+      console.error("Error fatching data", error.message);
+      setMovie([])
     }
   };
   console.log(movie, "searchMovie");
 
+
+
+
+  
+  
+  
+  
+// hello trycode
+
+
+  
+  
+  
+  
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       searchMovie(search);
