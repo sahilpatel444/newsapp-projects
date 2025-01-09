@@ -9,6 +9,7 @@ import DayForcast from "./DayForcast";
 
 
 
+
 //////
 
 function Search() {
@@ -110,8 +111,13 @@ function Search() {
     }
   };
 
+  useEffect(()=>{
+    document.title= "Project - Weather App"
+  },[])
   return (
     <>
+     
+    
     <div className={`weatherfull ${theme}`}>
 
    

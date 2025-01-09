@@ -27,6 +27,8 @@ import React, {  useContext, useEffect } from "react";
 import Card from "./Card";
 import { InputContext } from "../Context/inputContext";
 import newslogo from '../assets/image/newslogo.png'
+import { Helmet } from "react-helmet";
+
 
 const Newsapp = () => {
   
@@ -51,10 +53,19 @@ const Newsapp = () => {
   
 
 
- 
+ useEffect(()=>{
+  document.title= "Project - News App"
+ })
  
     return (
       <div className={`dark-navbar ${theme}`}>
+          <Helmet>
+        <meta charSet="utf-8" />
+        <title>Project - NewsApp</title>
+       
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+      </Helmet>
+      
         <nav className= 'navbarnews' >
          <div >
 

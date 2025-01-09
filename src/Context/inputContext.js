@@ -5,10 +5,10 @@ import { createContext, useState } from "react";
 export const InputContext = createContext();
 
 export const InputProvider = ({ children }) => {
-  const [search, setSearch] = useState('');
+  const [user, setUser] = useState("");
+
+  const [search, setSearch] = useState("");
   const [theme, setTheme] = useState("");
-  
-  
 
   const [newsData, setNewsData] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -24,10 +24,7 @@ export const InputProvider = ({ children }) => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
- 
   // weather api fetch and search history
-  
-  
 
   // News api data fetch
   // const API_KEY = "3111f5f1aebb4d6e918e28ada71eb559";
@@ -61,30 +58,29 @@ export const InputProvider = ({ children }) => {
     }
   };
 
-     // enter to search value
-     const handleKeyPress = (e) => {
-      if (e.key === "Enter") {
-        getdata(search); // Trigger the submit function
-       
-      }
-    };
-
- 
+  // enter to search value
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      getdata(search); // Trigger the submit function
+    }
+  };
 
   return (
     <InputContext.Provider
       value={{
         search,
-       
+
         setSearch,
         handleInput,
         theme,
         toggleTheme,
-      
+
         getdata,
         handleKeyPress,
         newsData,
         isLoading,
+        user,
+        setUser,
       }}
     >
       {children}

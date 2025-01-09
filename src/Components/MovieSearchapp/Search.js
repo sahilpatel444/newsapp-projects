@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./movie.css";
+
 
 const MovieSearch = () => {
   const [search, setSearch] = useState("");
@@ -14,27 +15,31 @@ const MovieSearch = () => {
       const response = await axios.get(
         `http://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`
       );
-    //   poster data filter
+      //   poster data filter
       const filterdata = (response.data.Search || []).filter(
         (movie) => movie.Poster !== "N/A"
       );
-      console.log(filterdata,"filterdata")
+      console.log(filterdata, "filterdata");
 
       setMovie(filterdata);
     } catch (error) {
-        console.error("Error fatching data", error);
+      console.error("Error fatching data", error);
     }
-};
+  };
   console.log(movie, "searchMovie");
 
-  const handleKeyPress=(e)=>{
-    if(e.key === "Enter" ){
-        searchMovie(search);
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      searchMovie(search);
     }
-}
-
+  };
+  useEffect(() => {
+    document.title = "Project - Movie app";
+  }, []);
   return (
-    <div>
+    <>
+    
+   
       <h2 style={{ color: "white", paddingTop: "10px", fontSize: "x-large" }}>
         Movie Search
       </h2>
@@ -62,14 +67,14 @@ const MovieSearch = () => {
             />
             <div className="card-body ">
               <h5 className="card-title">{movie.Title}</h5>
-              <a href="#" className="btn btn-primary">
+              <a href="/" className="btn btn-primary">
                 More Details
               </a>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

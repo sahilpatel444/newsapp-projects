@@ -4,7 +4,8 @@ import Result from "./Result";
 
 const HomePage = () => {
   return (
-    <div style={{backgroundColor:"black", height:"fit-content"}}>
+    <div style={{backgroundColor:"black", height:"fit-content",}}>
+
 
       <Search  />
       <Result/>

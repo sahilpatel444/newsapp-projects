@@ -37,8 +37,14 @@ const Notes = () => {
     localStorage.setItem("mydata", JSON.stringify(notes));
   });
 
+  useEffect(()=>{
+    document.title ="Project - Note App"
+  },[])
+
   return (
     <>
+      
+    
       <div className="notes">
         {notes.map((item) => (
           <Note id={item.id} text={item.text} deleteHandle={deleteHandle} />
