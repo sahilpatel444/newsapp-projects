@@ -27,9 +27,9 @@ export const InputProvider = ({ children }) => {
   // weather api fetch and search history
 
   // News api data fetch
-  const API_KEY = "50dd0402d8f184cd9b29c6c6914a9dd1";
+  // const API_KEY = "50dd0402d8f184cd9b29c6c6914a9dd1";
   // const API_KEY = "a5a28f6d927742b1b826385c28ae8215";
-  // const API_KEY = "62a90a716b8e41c1a6852f4d2756f3ca";
+  const API_KEY = "62a90a716b8e41c1a6852f4d2756f3ca";
   const getdata = async (query) => {
     console.log(query, "query search input name");
     if (!query) {
@@ -40,18 +40,18 @@ export const InputProvider = ({ children }) => {
     try {
       setIsLoading(true);
       const response = await fetch(
-        // `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}`
-        `https://gnews.io/api/v4/search?q=${search}&apikey=50dd0402d8f184cd9b29c6c6914a9dd1`
+        `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}`
+        // `https://gnews.io/api/v4/search?q=${search}&apikey=50dd0402d8f184cd9b29c6c6914a9dd1`
       );
      
       const jsonData = await response.json();
        console.log(jsonData, "news data")
-      // const filterData = jsonData?.articles?.filter(
-      //   (data) => data.author !== null
-      // );
-      // console.log(filterData, "filterdata");
+      const filterData = jsonData?.articles?.filter(
+        (data) => data.author !== null
+      );
+      console.log(filterData, "filterdata");
 
-      setNewsData(jsonData || []);
+      setNewsData( filterData || []);
     } catch (error) {
       console.error("Error fetching news data:", error);
       setNewsData([]);
