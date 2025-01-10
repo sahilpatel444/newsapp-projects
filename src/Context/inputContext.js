@@ -28,7 +28,8 @@ export const InputProvider = ({ children }) => {
 
   // News api data fetch
   // const API_KEY = "3111f5f1aebb4d6e918e28ada71eb559";
-  const API_KEY = "a5a28f6d927742b1b826385c28ae8215";
+  // const API_KEY = "a5a28f6d927742b1b826385c28ae8215";
+  const API_KEY = "62a90a716b8e41c1a6852f4d2756f3ca";
   const getdata = async (query) => {
     console.log(query, "query search input name");
     if (!query) {
