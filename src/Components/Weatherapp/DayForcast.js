@@ -68,9 +68,9 @@ const DayForcast = ({ weatherData }) => {
                       />
                       <h2 className="weekly-temp">
                         {Math.round(
-                          weatherData.forecast[0].forecast[2].main.temp_max
+                          weatherData.forecast[0].forecast[0].main.temp_max
                         )}
-                        °/{Math.round(weatherData.forecast[0].forecast[4].main.temp_min)}°
+                        °/{Math.round(weatherData.forecast[0].forecast[0].main.temp_min)}°
                       </h2>
                     </div>
 
