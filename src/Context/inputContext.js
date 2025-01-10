@@ -43,8 +43,12 @@ export const InputProvider = ({ children }) => {
         `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}`
         // ` https://newsdata.io/api/1/latest?apikey=${API_KEY}&q=${query}`
       );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       const jsonData = await response.json();
+      
       const filterData = jsonData?.articles?.filter(
         (data) => data.author !== null
       );
