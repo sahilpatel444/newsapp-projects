@@ -7,7 +7,8 @@ const MovieSearch = () => {
   const [search, setSearch] = useState("");
   const [movie, setMovie] = useState([]);
 
-  const API_KEY = "b92cd346";
+  // const API_KEY = "b92cd346";
+  const API_KEY = "b5382e81";
 
 
 
@@ -16,7 +17,7 @@ const MovieSearch = () => {
     if (!search) return;
     try {
       const response = await axios.get(
-        `http://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`
+        `https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`
       );
 
       if (response.data.Error) {
@@ -33,7 +34,7 @@ const MovieSearch = () => {
 
       setMovie(filterdata);
     } catch (error) {
-      console.error("Error fatching data", error.message);
+      console.error("Error fatching data", error);
       setMovie([])
     }
   };
