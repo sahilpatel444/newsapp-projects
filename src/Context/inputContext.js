@@ -43,15 +43,15 @@ export const InputProvider = ({ children }) => {
         `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}`
         // `https://gnews.io/api/v4/search?q=${search}&apikey=50dd0402d8f184cd9b29c6c6914a9dd1`
       );
-     
+
       const jsonData = await response.json();
-       console.log(jsonData, "news data")
+
       const filterData = jsonData?.articles?.filter(
         (data) => data.author !== null
       );
       console.log(filterData, "filterdata");
 
-      setNewsData( filterData || []);
+      setNewsData(filterData || []);
     } catch (error) {
       console.error("Error fetching news data:", error);
       setNewsData([]);
