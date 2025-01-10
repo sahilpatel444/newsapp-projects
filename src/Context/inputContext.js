@@ -39,18 +39,13 @@ export const InputProvider = ({ children }) => {
 
     try {
       setIsLoading(true);
-      const response = await axios.get(`https://newsapi.org/v2/everything`, {
-        params: {
-          q: query,
-          apiKey: API_KEY,
-        },
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
+      const response = await fetch(
+        // `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}`
+        ` https://newsapi.org/v2/everything?q=${search}&apiKey=62a90a716b8e41c1a6852f4d2756f3ca`
+      );
+     
       const jsonData = await response.json();
-
+      
       const filterData = jsonData?.articles?.filter(
         (data) => data.author !== null
       );
