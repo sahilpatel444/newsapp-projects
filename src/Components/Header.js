@@ -62,7 +62,7 @@ import { Link } from "react-router-dom";
 
 const navigation = [
   { name: "Projects", href: "/", current: true },
-  { name: "News App", href: "/", current: false },
+  { name: "News App", href: "/news", current: false },
   { name: "Weather App", href: "/weather", current: false },
   { name: "Note App", href: "/notes", current: false },
   {name:"Movie Search", href:"/movie",current:false}
