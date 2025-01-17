@@ -1,17 +1,35 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { InputContext } from "../../Context/inputContext";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import './Login.css'
+
+import axios from "axios";
 
 const Login = () => {
   const { user, setUser } = useContext(InputContext);
   const navigate = useNavigate();
 
-  const handleLoginSuccess = (credentialResponse) => {
-    console.log(credentialResponse, "Login Successfully");
+  const handleLoginSuccess = async (credentialResponse) => {
+    try {
+      const { credential } = credentialResponse;
+
+      // Send the token to the backend
+      const response = await axios.post(
+        "http://localhost:5000/api/google-login",
+        {
+          token: credential,
+        }
+      );
+      console.log("User data saved to MongoDB:", response.data);
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
+
+    // console.log(credentialResponse, "Login Successfully");
     const decoded = jwtDecode(credentialResponse.credential);
-    console.log(decoded, "user info");
+    console.log(user, "user info");
 
     // setUser({
     //   name: decoded.name,
@@ -26,7 +44,7 @@ const Login = () => {
 
     setUser(userData);
 
-    localStorage.setItem("user", JSON.stringify(decoded));
+    localStorage.setItem("user", JSON.stringify(userData));
     navigate("/");
   };
   const handleLoginFail = () => {
@@ -37,28 +55,91 @@ const Login = () => {
     setUser(null);
     localStorage.removeItem("user");
   };
-  //   store data in local storage
-  React.useEffect(() => {
-    const storeUser = localStorage.getItem("user");
-    
-    if (storeUser) {
-      setUser(JSON.parse(storeUser));
-    }
-  }, []);
+  // store data in local storage
+  // React.useEffect(() => {
+  //   const storeUser = localStorage.getItem("user");
+
+  //   if (storeUser) {
+  //     setUser(JSON.parse(storeUser));
+  //   }
+  // }, []);
+
+  // // Fetch users from the backend
+  // useEffect(() => {
+  //   const fetchUsers = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:5000/api/users");
+  //       setUser(response.data); // Save the users in state
+  //     } catch (error) {
+  //       console.error("Error fetching users:", error);
+  //     }
+  //   };
+
+  //   fetchUsers();
+  // }, []);
+  // console.log(user,"fetchUsers all")
+
   // alredy login to navigate
-//   if (user) {
-//     return <Navigate to="/" />;
-//   }
+  //   if (user) {
+  //     return <Navigate to="/" />;
+  //   }
   return (
     <div>
       <GoogleOAuthProvider clientId="571743621526-3lpmovu7hm9i31o7chqsa60vt7ikd3a6.apps.googleusercontent.com">
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <div style={{ textAlign: "center" }}>
           <h6>Google Login</h6>
           {!user ? (
-            <GoogleLogin
-              onSuccess={handleLoginSuccess}
-              onError={handleLoginFail}
-            />
+            <>
+              <GoogleLogin
+                className="Google-login-btn  "
+                width={10}
+              
+                onSuccess={handleLoginSuccess}
+                onError={handleLoginFail}
+              />
+              <form className="row g-3">
+                <div className="col-md-6 pb-2">
+                  <label for="inputEmail4" className="form-label">
+                    Email:-
+                  </label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="inputEmail4"
+                    placeholder="Enter your Email"
+                  />
+                </div>
+                <div className="col-md-6 pb-2">
+                  <label for="inputPassword4" className="form-label">
+                    Password:-
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="inputPassword4"
+                    placeholder="Enter your Password"
+                  />
+                </div>
+                <div className="col-12 pb-2">
+                  <label for="inputAddress" className="form-label">
+                    Name:-
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="inputName"
+                    placeholder="Enter Name"
+                  />
+                </div>
+
+                
+                <div className="col-12 ">
+                  <button type="submit" className="btn btn-primary bg-blue-800 ">
+                    Login
+                  </button>
+                </div>
+              </form>
+            </>
           ) : (
             <div>
               <img

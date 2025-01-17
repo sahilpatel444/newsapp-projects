@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const InputContext = createContext();
 
@@ -66,6 +66,15 @@ export const InputProvider = ({ children }) => {
       getdata(search); // Trigger the submit function
     }
   };
+
+    // store data in local storage
+    React.useEffect(() => {
+      const storeUser = localStorage.getItem("user");
+  
+      if (storeUser) {
+        setUser(JSON.parse(storeUser));
+      }
+    }, []);
 
   return (
     <InputContext.Provider

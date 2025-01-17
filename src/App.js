@@ -8,12 +8,15 @@ import Search from "./Components/Weatherapp/Search.js";
 import { InputProvider } from "./Context/inputContext.js";
 import HomePage from "./Components/MovieSearchapp/HomePage.js";
 import Login from "./Components/Login/login.js"
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
+  const clientId = "571743621526-3lpmovu7hm9i31o7chqsa60vt7ikd3a6.apps.googleusercontent.com";
   return (
     <>
       <BrowserRouter>
         <InputProvider>
+        <GoogleOAuthProvider clientId={clientId}>
             <Header />
       
           <Routes>
@@ -24,7 +27,7 @@ function App() {
             <Route path="/login" element={<Login/>}/>
           
           </Routes>
-       
+       </GoogleOAuthProvider>
         </InputProvider>
       </BrowserRouter>
     </>
