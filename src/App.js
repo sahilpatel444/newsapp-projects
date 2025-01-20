@@ -10,6 +10,7 @@ import HomePage from "./Components/MovieSearchapp/HomePage.js";
 import Login from "./Components/Login/login.js"
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Home from "./Components/Home.js";
+import Downloader from "./Components/VideoDownload/Downloader.js";
 
 function App() {
   const clientId = "571743621526-3lpmovu7hm9i31o7chqsa60vt7ikd3a6.apps.googleusercontent.com";
@@ -19,7 +20,7 @@ function App() {
         <InputProvider>
         <GoogleOAuthProvider clientId={clientId}>
             <Header />
-      
+     
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/news" element={<Newsapp />} />
@@ -27,6 +28,7 @@ function App() {
             <Route path="/weather" element={<Search />} />
             <Route path="/movie" element={<HomePage/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/downloader" element={<Downloader/>}/>
           
           </Routes>
        </GoogleOAuthProvider>
