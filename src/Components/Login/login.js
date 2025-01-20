@@ -83,7 +83,6 @@ const Login = () => {
   //   if (user) {
   //     return <Navigate to="/" />;
   //   }
-  // console.log(user,"user data")
   return (
     <div>
       <GoogleOAuthProvider clientId="571743621526-3lpmovu7hm9i31o7chqsa60vt7ikd3a6.apps.googleusercontent.com">

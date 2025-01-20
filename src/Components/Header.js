@@ -65,8 +65,7 @@ const navigation = [
   { name: "News App", href: "/news", current: false },
   { name: "Weather App", href: "/weather", current: false },
   { name: "Note App", href: "/notes", current: false },
-  {name:"Movie Search", href:"/movie",current:false},
-  {name:"Video Download", href:"/downloader",current:false}
+  {name:"Movie Search", href:"/movie",current:false}
 ];
 
 function classNames(...classes) {
