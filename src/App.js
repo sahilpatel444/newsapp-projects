@@ -28,7 +28,7 @@ function App() {
             <Route path="/weather" element={<Search />} />
             <Route path="/movie" element={<HomePage/>}/>
             <Route path="/login" element={<Login/>}/>
-            {/* <Route path="/downloader" element={<Downloader/>}/> */}
+            <Route path="/downloader" element={<Downloader/>}/>
           
           </Routes>
        </GoogleOAuthProvider>
