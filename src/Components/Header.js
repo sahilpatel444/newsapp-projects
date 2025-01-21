@@ -66,7 +66,7 @@ const navigation = [
   { name: "Weather App", href: "/weather", current: false },
   { name: "Note App", href: "/notes", current: false },
   {name:"Movie Search", href:"/movie",current:false},
-  // {name:"Video Download", href:"/downloader",current:false}
+  {name:"Video Download", href:"/downloader",current:false}
 ];
 
 function classNames(...classes) {
@@ -223,14 +223,14 @@ const Header = () => {
                   Movie App
                 </Link>
               </MenuItem>
-              {/* <MenuItem>
+              <MenuItem>
                 <Link
                   to="/downloader"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   Download Ig video
                 </Link>
-              </MenuItem> */}
+              </MenuItem>
             </MenuItems>
           </Menu>
         </div>
