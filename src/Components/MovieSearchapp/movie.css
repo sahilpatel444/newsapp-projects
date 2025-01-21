@@ -9,6 +9,7 @@
   font-size: x-large;
   border-color: black;
   border-radius: 10px;
+  outline: none;
 }
 .searchinput button {
   height: 50px;

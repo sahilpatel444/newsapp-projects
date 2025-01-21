@@ -76,6 +76,7 @@ const MovieSearch = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={handleKeyPress}
+          
         />
         <button style={{ backgroundColor: "white" }} onClick={searchMovie}>
           search

@@ -3,7 +3,7 @@ import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { InputContext } from "../../Context/inputContext";
 import { useNavigate } from "react-router-dom";
-import './Login.css'
+import "./Login.css";
 
 import axios from "axios";
 
@@ -26,7 +26,6 @@ const Login = () => {
     } catch (error) {
       console.error("Error during login:", error);
     }
-
     // console.log(credentialResponse, "Login Successfully");
     const decoded = jwtDecode(credentialResponse.credential);
     console.log(user, "user info");
@@ -44,6 +43,7 @@ const Login = () => {
 
     setUser(userData);
 
+ 
     localStorage.setItem("user", JSON.stringify(userData));
     navigate("/");
   };
@@ -87,7 +87,7 @@ const Login = () => {
   return (
     <div>
       <GoogleOAuthProvider clientId="571743621526-3lpmovu7hm9i31o7chqsa60vt7ikd3a6.apps.googleusercontent.com">
-        <div style={{ textAlign: "center" }}>
+        {/* <div style={{ textAlign: "center" }}>
           <h6>Google Login</h6>
           {!user ? (
             <>
@@ -98,48 +98,7 @@ const Login = () => {
                 onSuccess={handleLoginSuccess}
                 onError={handleLoginFail}
               />
-              <form className="row g-3">
-                <div className="col-md-6 pb-2">
-                  <label for="inputEmail4" className="form-label">
-                    Email:-
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="inputEmail4"
-                    placeholder="Enter your Email"
-                  />
-                </div>
-                <div className="col-md-6 pb-2">
-                  <label for="inputPassword4" className="form-label">
-                    Password:-
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="inputPassword4"
-                    placeholder="Enter your Password"
-                  />
-                </div>
-                <div className="col-12 pb-2">
-                  <label for="inputAddress" className="form-label">
-                    Name:-
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="inputName"
-                    placeholder="Enter Name"
-                  />
-                </div>
-
-                
-                <div className="col-12 ">
-                  <button type="submit" className="btn btn-primary bg-blue-800 ">
-                    Login
-                  </button>
-                </div>
-              </form>
+             
             </>
           ) : (
             <div>
@@ -161,6 +120,80 @@ const Login = () => {
               >
                 {" "}
                 logout
+              </button>
+            </div>
+          )}
+        </div> */}
+        <div
+          style={{
+            textAlign: "center",
+         
+            padding: "20px",
+            backgroundColor: "#f7f7f7",
+            borderRadius: "10px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            maxWidth: "400px",
+            margin: "auto",
+            marginTop:"50px"
+          }}
+        >
+          <h6 style={{ fontSize: "1.5rem", color: "#333" }}>Google Login</h6>
+          {!user ? (
+            <div>
+              <GoogleLogin
+                className="Google-login-btn"
+                // width={10}
+                onSuccess={handleLoginSuccess}
+                onError={handleLoginFail}
+                style={{
+                  backgroundColor: "#4285F4",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  padding: "10px 20px",
+                  fontSize: "1rem",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s",
+                }}
+              />
+            </div>
+          ) : (
+            <div style={{ textAlign: "center", marginTop: "100px" }}>
+              <img
+                style={{
+                  borderRadius: "50%",
+                  width: "100px",
+                  height: "100px",
+                  objectFit: "cover",
+                  border: "2px solid #ddd",
+                }}
+                src={user.picture}
+                alt="User Profile"
+              />
+              <h2
+                style={{ fontSize: "1.5rem", color: "#333", margin: "10px 0" }}
+              >
+                Welcome, {user.name}
+              </h2>
+              <h4 style={{ color: "#666", margin: "5px 0" }}>
+                Email: {user.email}
+              </h4>
+              <button
+                onClick={handleLogout}
+                style={{
+                  backgroundColor: "black",
+                  color: "white",
+                  borderRadius: "5px",
+                  padding: "8px 15px",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "1rem",
+                  transition: "background-color 0.3s",
+                }}
+                onMouseEnter={(e) => (e.target.style.backgroundColor = "#444")}
+                onMouseLeave={(e) => (e.target.style.backgroundColor = "black")}
+              >
+                Logout
               </button>
             </div>
           )}
